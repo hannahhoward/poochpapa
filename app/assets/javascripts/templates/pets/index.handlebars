@@ -1,0 +1,5 @@
+<ul>
+  {{#each controller}}
+    <li>{{#link-to 'pets.show' this}}{{name}}{{/link-to}}</li>
+  {{/each}}
+</ul>
