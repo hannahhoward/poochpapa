@@ -8,6 +8,7 @@ Poochpapa.Auth = Em.Auth.extend
     'emberData'
     'authRedirectable'
   ]
+
   signInEndPoint: '/api/sign_in'
   signOutEndPoint: '/api/sign_out'
   tokenKey: 'auth_token'
