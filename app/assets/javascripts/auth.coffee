@@ -7,6 +7,7 @@ Poochpapa.Auth = Em.Auth.extend
   modules: [
     'emberData'
     'authRedirectable'
+    'actionRedirectable'
   ]
 
   signInEndPoint: '/api/sign_in'
