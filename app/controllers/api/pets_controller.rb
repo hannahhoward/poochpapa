@@ -1,6 +1,5 @@
 module Api
   class PetsController < BaseController
-    before_action :auth_only!
 
     def index
       if params[:ids]
@@ -8,11 +7,13 @@ module Api
       else
         @pets = Pet.all
       end
+      authorize! :index, @pets
       respond_with @pets
     end
 
     def show
       @pet = Pet.find(params[:id])
+      authorize! :show, @pet
       respond_with @pet
     end
   end

@@ -1,6 +1,5 @@
 module Api
   class UsersController < BaseController
-    before_action :auth_only!
 
     def index
       if params[:ids]
@@ -8,12 +7,13 @@ module Api
       else
         @users = User.all
       end
+      authorize! :index, @users
       respond_with @users
     end
 
-    def
     def show
       @user = User.find(params[:id])
+      authorize! :show, @user
       respond_with @user
     end
 

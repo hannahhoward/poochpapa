@@ -12,4 +12,5 @@ describe Client do
   it { should have_db_column :phone_number }
   it { should have_one :user }
   it { should have_many :pets }
+  it { should validate_presence_of :first_name }
 end
