@@ -12,9 +12,8 @@ gem 'sass-rails', '~> 4.0'
 gem 'uglifier', '~> 2.1'
 
 gem 'devise', '>= 3.0', '< 3.1' # server-side authentication
-                                # 3.1 removes token auth
+gem 'cancan'                                # 3.1 removes token auth
 gem 'bcrypt-ruby', '~> 3.0' # password encryption
-
 gem 'active_model_serializers', '~> 0.7' # json that conforms to ember-data expectation
 
 gem 'ember-rails', '~> 0.13' # ember framework
@@ -38,9 +37,14 @@ group :test do
   gem 'database_cleaner', '~> 1.0' # cleanup database in tests
   gem 'fabrication', '~> 2.6' # model stubber
   gem 'shoulda', '~> 3.3' # model spec tester
+  gem 'faker'
   gem 'rb-inotify', require: false  # Linux file notification
   gem 'rb-fsevent', require: false  # OSX file notification
   gem 'rb-fchange', require: false  # Windows file notification
+end
+
+group :development do
+  gem 'pivotal-github'
 end
 
 group :production do

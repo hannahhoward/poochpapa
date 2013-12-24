@@ -10,8 +10,8 @@ module Api
 
     protected
 
-    def auth_only!
-      render json: {}, status: 401 unless current_user
+    rescue_from CanCan::AccessDenied do |exception|
+      render json: {}, status: 401
     end
 
     def default_json

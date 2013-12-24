@@ -64,4 +64,5 @@ describe Api::PetsController do
       end
     end
   end
+
 end
