@@ -1,0 +1,5 @@
+<ul>
+  {{#each controller}}
+    <li>{{#link-to 'clients.show' this}}{{fullName}}{{/link-to}}</li>
+  {{/each}}
+</ul>

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Api::ClientsController do
-  let(:user) { Fabricate(:admin) }
+  let(:user) { Fabricate(:admin_user) }
   let(:client) { Fabricate(:client) }
   before { user; client } # initialize it
 

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Api::PetsController do
-  let(:user) { Fabricate(:admin) }
+  let(:user) { Fabricate(:admin_user) }
   let(:pet) { Fabricate(:pet) }
   before { user; pet } # initialize it
 

@@ -3,8 +3,8 @@ Fabricator(:user) do
   password 'foobarbaz'
 end
 
-Fabricator(:admin, :from => :user) do
-  role_type 'admin'
+Fabricator(:admin_user, :from => :user) do
+  role(fabricator: :admin)
 end
 
 Fabricator(:client_user, :from => :user) do
