@@ -1,0 +1,11 @@
+Poochpapa.Client = DS.Model.extend
+  street_address_1: DS.attr 'string'
+  street_address_2: DS.attr 'string'
+  city: DS.attr 'string'
+  state: DS.attr 'string'
+  zip: DS.attr 'string'
+  special_instructions: DS.attr 'string'
+  first_name: DS.attr 'string'
+  last_name: DS.attr 'string'
+  phone_number: DS.attr 'string'
+  param: DS.attr 'string'

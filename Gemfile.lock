@@ -38,6 +38,7 @@ GEM
       emblem-source
     bcrypt-ruby (3.1.2)
     builder (3.1.4)
+    cancan (1.6.10)
     celluloid (0.15.2)
       timers (~> 1.1.0)
     childprocess (0.3.9)
@@ -125,8 +126,11 @@ GEM
     erubis (2.7.0)
     execjs (2.0.2)
     fabrication (2.9.3)
+    faker (1.2.0)
+      i18n (~> 0.5)
     ffi (1.9.3)
     formatador (0.2.4)
+    git-utils (0.6.0)
     guard (2.2.4)
       formatador (>= 0.2.4)
       listen (~> 2.1)
@@ -158,11 +162,17 @@ GEM
       treetop (~> 1.4.8)
     method_source (0.8.2)
     mime-types (1.25.1)
+    mini_portile (0.5.2)
     minitest (4.7.5)
     multi_json (1.8.2)
     newrelic_rpm (3.6.9.171)
+    nokogiri (1.6.1)
+      mini_portile (~> 0.5.0)
     orm_adapter (0.5.0)
     pg (0.17.0)
+    pivotal-github (1.2.2)
+      git-utils
+      nokogiri
     polyglot (0.3.3)
     pry (0.9.12.4)
       coderay (~> 1.0)
@@ -258,6 +268,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.7)
   bcrypt-ruby (~> 3.0)
+  cancan
   coffee-rails (~> 4.0)
   database_cleaner (~> 1.0)
   devise (>= 3.0, < 3.1)
@@ -273,11 +284,13 @@ DEPENDENCIES
   ember-rails (~> 0.13)
   emblem-rails (~> 0.1)
   fabrication (~> 2.6)
+  faker
   guard-rspec (~> 3.0)
   guard-spork (~> 1.5)
   jquery-rails (~> 3.0)
   newrelic_rpm (~> 3.5)
   pg (~> 0.14)
+  pivotal-github
   rails (~> 4.0)
   rails_12factor (~> 0.0)
   rb-fchange
