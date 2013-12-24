@@ -1,8 +1,9 @@
 require 'spec_helper'
 
-describe Api::UsersController do
+describe Api::AdminsController do
   let(:user) { Fabricate(:admin_user) }
-  before { user } # initialize it
+  let(:admin) { user.role }
+  before { user; admin } # initialize it
 
   describe 'GET index' do
     context 'unauthorized' do
@@ -18,21 +19,19 @@ describe Api::UsersController do
         user.ensure_authentication_token!
         get :index, auth_token: user.authentication_token
       end
-
       subject { JSON.parse response.body }
 
-      it 'wraps around users' do should include 'users' end
+      it 'wraps around admins' do should include 'admins' end
 
       it 'returns http 200' do
         response.response_code.should == 200
       end
-
     end
   end
 
   describe 'GET show' do
     context 'unauthorized' do
-      before { get :show, id: user.id }
+      before { get :show, id: admin.id }
 
       it 'returns http 401' do
         response.response_code.should == 401
@@ -42,23 +41,17 @@ describe Api::UsersController do
     context 'authorized as admin' do
       before do
         user.ensure_authentication_token!
-        get :show, id: user.id, auth_token: user.authentication_token
+        get :show, id: admin.id, auth_token: user.authentication_token
       end
-
       subject { JSON.parse response.body }
 
-      it 'wraps around user' do should include 'user' end
-      context 'inside user' do
-        subject { JSON.parse(response.body)['user'] }
+      it 'wraps around admi' do should include 'admin' end
+      context 'inside admin' do
+        subject { JSON.parse(response.body)['admin'] }
         it { should include 'id' }
-        it { should include 'email' }
-        it { should include 'param' }
-        it { should include 'role' }
-        context 'inside role' do
-          subject { JSON.parse(response.body)['user']['role']}
-          it { should include 'id' }
-          it { should include 'type' }
-        end
+        it { should include 'first_name' }
+        it { should include 'last_name' }
+        it { should include 'user_id' }
       end
 
       it 'returns http 200' do
@@ -66,4 +59,5 @@ describe Api::UsersController do
       end
     end
   end
+
 end

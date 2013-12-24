@@ -6,4 +6,6 @@ Poochpapa.Router.map ->
     @route 'show', { path: '/:pet_id' }
   @resource 'users', ->
     @route 'show', { path: '/:user_id' }
+  @resource 'clients', ->
+    @route 'show', { path: '/:client_id' }
   @route 'sign-in'

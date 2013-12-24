@@ -8,6 +8,7 @@ Poochpapa.Auth = Em.Auth.extend
     'emberData'
     'authRedirectable'
     'actionRedirectable'
+    'rememberable'
   ]
 
   signInEndPoint: '/api/sign_in'
@@ -27,3 +28,8 @@ Poochpapa.Auth = Em.Auth.extend
     signInSmart: true
     signInBlacklist: ['sign-in']
     signOutRoute: 'sign-in'
+
+  rememberable:
+    tokenKey: 'remember_token'
+    period: 7 # days
+    autoRecall: true

@@ -3,7 +3,7 @@ require 'cancan/matchers'
 
 describe "Anyone's ability" do
   let :user do
-    Fabricate(:admin)
+    Fabricate(:admin_user)
   end
 
   let :ability do Ability.new(user) end

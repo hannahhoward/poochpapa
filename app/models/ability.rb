@@ -4,7 +4,7 @@ class Ability
   def initialize(user)
     if user.present?
       case user.role_type.to_s
-      when 'admin'
+      when 'Admin'
         add_admin_abilities(user)
       when 'Client'
         add_client_abilities(user)

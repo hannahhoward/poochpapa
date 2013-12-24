@@ -1,3 +1,7 @@
 <h1>{{email}}</h1>
 
+{{#if role}}
+  <p><strong>Name:</strong> {{role.fullName}}</p>
+{{/if}}
+
 {{#link-to 'users.index'}}Back to users list{{/link-to}}
