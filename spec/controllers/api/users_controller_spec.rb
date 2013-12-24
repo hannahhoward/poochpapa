@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Api::UsersController do
-  let(:user) { Fabricate(:user) }
+  let(:user) { Fabricate(:admin) }
   before { user } # initialize it
 
   describe 'GET index' do
@@ -13,7 +13,7 @@ describe Api::UsersController do
       end
     end
 
-    context 'authorized' do
+    context 'authorized as admin' do
       before do
         user.ensure_authentication_token!
         get :index, auth_token: user.authentication_token
@@ -39,7 +39,7 @@ describe Api::UsersController do
       end
     end
 
-    context 'authorized' do
+    context 'authorized as admin' do
       before do
         user.ensure_authentication_token!
         get :show, id: user.id, auth_token: user.authentication_token
@@ -53,6 +53,12 @@ describe Api::UsersController do
         it { should include 'id' }
         it { should include 'email' }
         it { should include 'param' }
+        it { should include 'role' }
+        context 'inside role' do
+          subject { JSON.parse(response.body)['user']['role']}
+          it { should include 'id' }
+          it { should include 'type' }
+        end
       end
 
       it 'returns http 200' do

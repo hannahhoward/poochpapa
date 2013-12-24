@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Api::PetsController do
-  let(:user) { Fabricate(:user) }
+  let(:user) { Fabricate(:admin) }
   let(:pet) { Fabricate(:pet) }
   before { user; pet } # initialize it
 
@@ -14,7 +14,7 @@ describe Api::PetsController do
       end
     end
 
-    context 'authorized' do
+    context 'authorized as admin' do
       before do
         user.ensure_authentication_token!
         get :index, auth_token: user.authentication_token
@@ -38,7 +38,7 @@ describe Api::PetsController do
       end
     end
 
-    context 'authorized' do
+    context 'authorized as admin' do
       before do
         user.ensure_authentication_token!
         get :show, id: pet.id, auth_token: user.authentication_token
