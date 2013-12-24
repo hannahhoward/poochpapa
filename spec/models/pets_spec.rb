@@ -8,4 +8,5 @@ describe Pet do
   it { should have_db_column :medical_history }
   it { should have_db_column :special_needs }
   it { should have_db_column :instructions }
+  it { should belong_to :client }
 end
