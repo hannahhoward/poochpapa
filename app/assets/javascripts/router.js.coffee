@@ -1,5 +1,9 @@
-Poochpapa.Router.reopen
-  location: 'history'
+if (typeof API_SERVER != 'undefined' && API_SERVER != "")
+  Poochpapa.Router.reopen
+    rootUrl: '/android_asset/www/'
+else
+  Poochpapa.Router.reopen
+    location: 'history'
 
 Poochpapa.Router.map ->
   @resource 'pets', ->

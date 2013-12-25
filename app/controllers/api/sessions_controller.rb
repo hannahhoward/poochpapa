@@ -1,5 +1,7 @@
 module Api
   class SessionsController < BaseController
+    skip_before_filter :require_no_authentication #Needed for standalone Mobile apps
+
     def create
       unless (params[:email] && params[:password]) || (params[:remember_token])
         return missing_params

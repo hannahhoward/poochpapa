@@ -33,3 +33,7 @@ Poochpapa.Auth = Em.Auth.extend
     tokenKey: 'remember_token'
     period: 7 # days
     autoRecall: true
+
+if (typeof API_SERVER != 'undefined' && API_SERVER != "")
+  Poochpapa.Auth.reopen
+    baseUrl: API_SERVER
