@@ -10,6 +10,8 @@ gem 'jquery-rails', '~> 3.0'
 gem 'coffee-rails', '~> 4.0'
 gem 'sass-rails', '~> 4.0'
 gem 'uglifier', '~> 2.1'
+gem 'foundation-rails'
+gem 'phonegap-rails'
 
 gem 'devise', '>= 3.0', '< 3.1' # server-side authentication
 gem 'cancan'                                # 3.1 removes token auth
