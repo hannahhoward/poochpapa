@@ -18,5 +18,4 @@
 
 # for more details see: http://emberjs.com/guides/application/
 window.Poochpapa = Ember.Application.create()
-
 #= require_tree .

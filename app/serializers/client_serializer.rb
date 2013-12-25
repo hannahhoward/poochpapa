@@ -6,6 +6,10 @@ class ClientSerializer < BaseSerializer
   has_many :pets
 
   def param
-    "#{id}-#{first_name.dasherize.parameterize}-#{last_name.dasherize.parameterize}"
+    if last_name
+      "#{id}-#{first_name.dasherize.parameterize}-#{last_name.dasherize.parameterize}"
+    else
+      "#{id}-#{first_name.dasherize.parameterize}"
+    end
   end
 end
