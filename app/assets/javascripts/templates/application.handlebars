@@ -2,7 +2,10 @@
 
 <nav>
   {{#link-to 'pets.index'}}Pets list{{/link-to}}
+  {{#link-to 'clients.index'}}Clients list{{/link-to}}
   {{#link-to 'users.index'}}Users list{{/link-to}}
 </nav>
+
+{{view Poochpapa.FlashView model=Poochpapa.flash}}
 
 {{outlet}}

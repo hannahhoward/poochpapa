@@ -1,0 +1,7 @@
+<ul>
+  {{#each controller}}
+    <li>{{#link-to 'clients.show' this}}{{fullName}}{{/link-to}}</li>
+  {{/each}}
+</ul>
+
+{{#linkTo 'clients.new'}}Create New Client{{/linkTo}}

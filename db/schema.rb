@@ -11,10 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131124220436) do
+ActiveRecord::Schema.define(version: 20131224195737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admins", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "clients", force: true do |t|
+    t.string   "street_address_1"
+    t.string   "street_address_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.text     "special_instructions"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "clients", ["first_name"], name: "index_clients_on_first_name", using: :btree
+  add_index "clients", ["last_name"], name: "index_clients_on_last_name", using: :btree
 
   create_table "pets", force: true do |t|
     t.string   "name"
@@ -26,6 +50,7 @@ ActiveRecord::Schema.define(version: 20131124220436) do
     t.text     "instructions"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "client_id"
   end
 
   create_table "users", force: true do |t|
@@ -42,6 +67,8 @@ ActiveRecord::Schema.define(version: 20131124220436) do
     t.string   "authentication_token"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "role_type"
+    t.integer  "role_id"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree

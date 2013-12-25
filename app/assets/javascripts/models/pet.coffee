@@ -1,9 +1,10 @@
 Poochpapa.Pet = DS.Model.extend
   name: DS.attr 'string'
   age: DS.attr 'number'
-  animal_type: DS.attr 'string'
+  animalType: DS.attr 'string'
   breed: DS.attr 'string'
-  medical_history: DS.attr 'string'
-  special_needs: DS.attr 'string'
+  medicalHistory: DS.attr 'string'
+  specialNeeds: DS.attr 'string'
   instructions: DS.attr 'string'
+  client: DS.belongsTo 'client', { async: true }
   param: DS.attr 'string'

@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
          :token_authenticatable
 
   validates :email, presence: true
+
+  belongs_to :role, :polymorphic => true
 end

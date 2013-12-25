@@ -5,13 +5,16 @@ Poochpapa::Application.routes.draw do
       post   'sign_in'  => 'sessions#create'
       delete 'sign_out' => 'sessions#destroy'
     end
-    resources :pets, only: [:index, :show]
+    resources :pets, only: [:index, :show, :create, :update, :destroy]
     resources :users, only: [:index, :show]
+    resources :admins, only: [:index, :show]
+    resources :clients, only: [:index, :show, :create, :update, :destroy]
   end
 
   root to: 'home#index'
 
   get '*ember' => 'home#index'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
