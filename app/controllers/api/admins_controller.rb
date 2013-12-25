@@ -1,20 +1,26 @@
 module Api
   class AdminsController < BaseController
+    before_filter :find_admins, :only => :index
+    load_resource :only => [:show]
+    authorize_resource
 
     def index
+      respond_with @admins
+    end
+
+    def show
+      respond_with @admin
+    end
+
+    private
+
+    def find_admins
       if params[:ids]
         @admins = Admin.find(params[:ids])
       else
         @admins = Admin.all
       end
-      authorize! :index, @admins
-      respond_with @admins
     end
 
-    def show
-      @admin = Admin.find(params[:id])
-      authorize! :show, @admin
-      respond_with @admin
-    end
   end
 end
