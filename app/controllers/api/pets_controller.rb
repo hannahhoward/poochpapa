@@ -1,27 +1,19 @@
 module Api
   class PetsController < BaseController
+    before_filter :find_pets, :only => :index
+    before_filter :build_pet, :only => :create
+    load_resource :only => [:show, :update, :destroy]
+    authorize_resource
 
     def index
-      if params[:ids]
-        @pets = Pet.find(params[:ids])
-      else
-        @pets = Pet.all
-      end
-      authorize! :index, @pets
       respond_with @pets
     end
 
     def show
-      @pet = Pet.find(params[:id])
-      authorize! :show, @pet
       respond_with @pet
     end
 
     def create
-      @pet = Pet.new(pet_params)
-
-      authorize! :create, @pet
-
       if @pet.save
         render json: @pet, status: :created
       else
@@ -30,11 +22,6 @@ module Api
     end
 
     def update
-      @pet = Pet.find(params[:id])
-
-
-      authorize! :update, @pet
-
       if @pet.update_attributes(pet_params)
         render json: @pet
       else
@@ -43,14 +30,24 @@ module Api
     end
 
     def destroy
-      @pet = Pet.find(params[:id])
-      authorize! :destroy, @pet
       @pet.destroy
 
       render json: :no_content
     end
 
     private
+
+    def find_pets
+      if params[:ids]
+        @pets = Pet.find(params[:ids])
+      else
+        @pets = Pet.all
+      end
+    end
+
+    def build_pet
+      @pet = Pet.new(pet_params)
+    end
 
     def pet_params
       params.require(:pet).permit(
