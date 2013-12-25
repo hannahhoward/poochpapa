@@ -1,4 +1,6 @@
-<form action 'signOut' on="submit"}}>
-  {{auth.user.email}}
-  <button type=submit>Sign out</button>
-</form>
+{{#if auth.signedIn}}
+  <ul class="right">
+    <li>{{#linkTo 'users.show' auth.user}}{{auth.user.email}}{{/linkTo}}</li>
+    <li class="has-form"><a {{action "signOut"}} class="button">Sign out</a></li>
+  </ul>
+{{/if}}

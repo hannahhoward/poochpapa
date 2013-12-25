@@ -1,11 +1,29 @@
-{{render 'auth'}}
 
-<nav>
-  {{#link-to 'pets.index'}}Pets list{{/link-to}}
-  {{#link-to 'clients.index'}}Clients list{{/link-to}}
-  {{#link-to 'users.index'}}Users list{{/link-to}}
-</nav>
+<div class="wrap">
+  <div class="header">
 
-{{view Poochpapa.FlashView model=Poochpapa.flash}}
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#">Pooch Papa Pages</a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+      <section class="top-bar-section">
+        <ul class="left">
+          <li>{{#link-to 'pets.index'}}Pets list{{/link-to}}</li>
+          <li>{{#link-to 'clients.index'}}Clients list{{/link-to}}</li>
+          <li>{{#link-to 'users.index'}}Users list{{/link-to}}</li>
+        </ul>
+        {{render 'auth/sign-out'}}
+      </section>
+    </nav>
+  </div>
+  <div class= "content">
+    {{render 'auth/sign-in'}}
 
-{{outlet}}
+    {{view Poochpapa.FlashView model=Poochpapa.flash}}
+
+    {{outlet}}
+  </div>
+</div>

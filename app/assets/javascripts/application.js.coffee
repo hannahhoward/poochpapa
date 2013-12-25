@@ -1,4 +1,5 @@
 #= require jquery
+
 #= require handlebars
 #= require ember
 #= require ember-data
@@ -12,6 +13,7 @@
 #= require ember-auth-module-auth-redirectable
 #= require ember-auth-module-action-redirectable
 #= require ember-auth-module-rememberable
+#= require foundation
 
 #= require_self
 #= require poochpapa
@@ -20,3 +22,8 @@
 window.Poochpapa = Ember.Application.create()
 
 #= require_tree .
+
+$(->
+  $(document).foundation()
+  return
+)
