@@ -1,9 +1,9 @@
 <h1>{{fullName}}</h1>
 
-<p><strong>Street Address Line 1:</strong> {{streetAddress1}}</p>
-<p><strong>Street Address Line 2:</strong> {{streetAddress2}}</p>
+<p><strong>Street Address Line 1:</strong> {{streetAddress_1}}</p>
+<p><strong>Street Address Line 2:</strong> {{streetAddress_2}}</p>
 <p><strong>City:</strong> {{city}}</p>
-<p><strong>State:</strong> {{city}}</p>
+<p><strong>State:</strong> {{state}}</p>
 <p><strong>Zip:</strong> {{zip}}</p>
 <p><strong>Special Instructions:</strong> {{specialInstructions}}</p>
 <p><strong>Phone Number:</strong> {{phoneNumber}}</p>
@@ -19,4 +19,5 @@
   </ul>
 {{/if}}
 
+{{#link-to 'clients.edit' this}}Edit this client{{/link-to}}
 {{#link-to 'clients.index'}}Back to clients list{{/link-to}}

@@ -9,3 +9,6 @@
 #= require_tree ./routes
 #= require ./router
 #= require_self
+
+Poochpapa.set('flash', Poochpapa.FlashModel.create());
+

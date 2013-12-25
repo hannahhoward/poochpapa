@@ -12,17 +12,19 @@ Poochpapa.Role = DS.Model.extend
       else
         '(No Name)'
 
-    firstName = '' if firstName is undefined
-    lastName = '' if lastName is undefined
-
-    firstName + ' ' + lastName
+    if firstName? and lastName?
+      firstName + ' ' + lastName
+    else if firstName?
+      firstName
+    else
+      ''
   ).property('firstName', 'lastName')
 
 Poochpapa.Admin = Poochpapa.Role.extend({})
 
 Poochpapa.Client = Poochpapa.Role.extend
-  streetAddress1: DS.attr 'string'
-  streetAddress2: DS.attr 'string'
+  streetAddress_1: DS.attr 'string'
+  streetAddress_2: DS.attr 'string'
   city: DS.attr 'string'
   state: DS.attr 'string'
   zip: DS.attr 'string'
