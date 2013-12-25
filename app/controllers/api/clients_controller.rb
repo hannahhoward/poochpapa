@@ -1,27 +1,20 @@
 module Api
   class ClientsController < BaseController
+    before_filter :find_clients, :only => :index
+    before_filter :build_client, :only => :create
+    load_resource :only => [:show, :update, :destroy]
+    authorize_resource
+
     def index
-      if params[:ids]
-        @clients = Client.find(params[:ids])
-      else
-        @clients = Client.all
-      end
-      authorize! :index, @clients
       respond_with @clients
     end
 
     def show
-      @client = Client.find(params[:id])
-      authorize! :show, @client
       respond_with @client
     end
 
 
     def create
-      @client = Client.new(client_params)
-
-      authorize! :create, @client
-
       if @client.save
         render json: @client, status: :created
       else
@@ -30,11 +23,6 @@ module Api
     end
 
     def update
-      @client = Client.find(params[:id])
-
-
-      authorize! :update, @client
-
       if @client.update_attributes(client_params)
         render json: @client
       else
@@ -43,8 +31,6 @@ module Api
     end
 
     def destroy
-      @client = Client.find(params[:id])
-      authorize! :destroy, @client
       @client.destroy
 
       render json: :no_content
@@ -64,6 +50,17 @@ module Api
         :phone_number)
     end
 
+    def find_clients
+      if params[:ids]
+        @clients = Client.find(params[:ids])
+      else
+        @clients = Client.all
+      end
+    end
+
+    def build_client
+      @client = Client.new(client_params)
+    end
 
   end
 
