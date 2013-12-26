@@ -1,5 +1,9 @@
+<h1>Pets</h1>
+
 <ul>
   {{#each controller}}
     <li>{{#link-to 'pets.show' this}}{{name}}{{/link-to}}</li>
   {{/each}}
 </ul>
+
+{{#linkTo 'pets.new'}}Create New Pet{{/linkTo}}

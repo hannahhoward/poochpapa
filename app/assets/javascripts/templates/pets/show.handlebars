@@ -7,4 +7,9 @@
 <p><strong>Special Needs:</strong> {{specialNeeds}}</p>
 <p><strong>Instructions for Care:</strong> {{instructions}}</p>
 
-{{#link-to 'pets.index'}}Back to posts list{{/link-to}}
+{{#if client}}
+  <p><strong>Owner:</strong> {{client.fullName}}</p>
+{{/if}}
+
+{{#link-to 'pets.edit' this}}Edit this pet{{/link-to}}
+{{#link-to 'pets.index'}}Back to pets list{{/link-to}}

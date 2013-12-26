@@ -1,0 +1,15 @@
+<form {{action 'commit' this currentClient on="submit"}}>
+<p><label>Name:</label> {{input type='text' value=name}}
+<p><label>Age:</label> {{input type='text' value=age}}</p>
+<p><label>Type of Animal:</label> {{input type='text' value=animalType}}</p>
+<p><label>Breed:</label> {{input type='text' value=breed}}</p>
+<p><label>Medical History:</label> {{textarea cols="80" rows="6" value=medicalHistory}}</p>
+<p><label>Special Needs:</label> {{textarea cols="80" rows="6" value=specialNeeds}}</p>
+<p><label>Instructions for Care:</label> {{textarea cols="80" rows="6" value=instructions}}</p>
+<p><label>Owner:</label>{{view Ember.Select
+       content=clients
+       optionValuePath="content.id"
+       optionLabelPath="content.fullName"
+       selection=currentClient}}
+<button type=submit>Save</button>
+</form>

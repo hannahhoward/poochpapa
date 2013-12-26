@@ -6,5 +6,5 @@ Poochpapa.Pet = DS.Model.extend
   medicalHistory: DS.attr 'string'
   specialNeeds: DS.attr 'string'
   instructions: DS.attr 'string'
-  client: DS.belongsTo 'client', { async: true }
+  client: DS.belongsTo 'client'
   param: DS.attr 'string'

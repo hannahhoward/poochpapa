@@ -1,4 +1,5 @@
 Poochpapa.ClientBaseController = Em.ObjectController.extend
+
   saveModel: (model) ->
     self = this
     model.save().then( ()->
